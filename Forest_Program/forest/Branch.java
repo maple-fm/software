@@ -1,40 +1,58 @@
 package forest;
 
-/*
- * ブランチクラス
+import java.awt.Graphics;
+
+/**
+ * 樹状整列におけるブランチを担うクラス
  */
-public class Branch extends Objact {
-    /*
-     * 枝に繋がっている親クラスのインスタンスを生成
-     */
-    private Node parentNode;
-    
-    /*
-     * 枝に繋がっている子クラスのインスタンスを生成
-     */
-    private Node childNode;
+public class Branch extends Object {
 
-    /*
-     * ブランチのインスタンスを生成
-     * @param parentNode 親ノード
-     * @param childNode 子ノード
+    /**
+     * ブランチの始点となるノード
      */
-    public Branch(Node parentNode, Node childNode) {
-        this.parentNode = parentNode;
-        this.childNode = childNode;
-    }
+	private Node start;
 
-    /*
-     * 親ノードを応答する。
+    /**
+     * ブランチの終点となるノード
      */
-    public Node getParentNode() {
-        return this.parentNode;
-    }
+	private Node end;
 
-    /*
-     * 子ノードを応答する。
+	/**
+	 *  このクラスのインスタンスを生成するコンスタンス
+     * @param from ブランチの始点となるノード
+     * @param to ブランチの終点となるノード
+	 */
+	public void Branch(Node from, Node to) {
+        this.start = from;
+        this.end = to;
+	}
+
+	/**
+	 *  ブランチを描画する
+	 */
+	public void draw(Graphics aGraphics) {
+
+	}
+
+    /**
+     * ブランチの終点となるノードを応答する
      */
-    public Node getChildNode() {
-        return this.childNode;
-    }
+	public Node end() {
+		return this.end;
+	}
+
+    /**
+     * ブランチの始点となるノードを応答する
+     */
+	public Node start() {
+		return this.start;
+	}
+
+    /**
+     * 自分自身を文字列に変換する
+     */
+	public String toString() {
+		return null;
+	}
+
 }

@@ -1,115 +1,139 @@
 package forest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Graphics;
 
-import javax.swing.JLabel;
+/**
+ * 樹状整列におけるノードを担うクラス
+ */
+public class Node extends Component {
 
-public class Node extends JLabel {
-    
-    /*
-     * ノード番号を束縛する
+    /**
+     * ノードの大きさを記憶するフィールド
      */
-    private int nodeNumber;
+	private Point extent;
 
-    /*
-     * ノードの名前を束縛する
+    /**
+     * ノードの場所を記憶するフィールド
      */
-    private String nodeName;
+	private Point location;
 
-    /*
-     * ノードの親インスタンスを束縛する
+    /**
+     * ノード名を記憶するフィールド
      */
-    private Node parent;
+	private String name;
 
-    /*
-     * ノードの子インスタンスを束縛する
+    /**
+     * 樹状整列する歳のノードの状態を記憶するフィールド
      */
-    private ArrayList<Node> children; 
+	private Integer status;
 
-    /*
-     * 探索済みかどうかを判別
-     */
-    private boolean visit;
+	/**
+	 * このクラスのインスタンスを生成するコンストラクタ 
+     * @param aString ノード名：ラベル文字列
+	 */
+	public void Node(String aString) {
+        this.name = aString;
+	}
 
-    /*
-     * ノードのインスタンスの生成
-     * @param number ノード番号
-     * @param name ノードの名前
-     */
-    Node(int number, String name) {
-        this.nodeNumber = number;
-        this.nodeName = name;
-        this.parent = null;
-        this.children = new ArrayList<Node>();
-        this.visit = false;
-    }
+	/**
+	 *  ノードを描画する
+     * @param aGraphics グラフィクス
+	 */
+	public void draw(Graphics aGraphics) {
 
-    /*
-     * ノード番号を応答する。
-     */
-    public int getNumber() {
-        return this.nodeNumber;
-    }
 
-    /*
-     * ノードの名前を応答する。
-     */
-    public String getName() {
-        return this.nodeName;
-    }
+	}
 
-    /*
-     * 親ノードのインスタンスを応答する。
+    /**
+     * ノードの描画領域を応答するメソッド
+     * @return ノードの描画領域
+     * @Override 
      */
-    public Node getParent() {
-        return this.parent;
-    }
+	public Rectangle getBounds() {
+		return null;
+	}
 
-    /*
-     * 子ノードのインスタンスを応答する。
+    /**
+     * ノードの大きさを応答する
      */
-    public ArrayList<Node> getChildren() {
-        return this.children;
-    }
+	public Point getExtent() {
+		return this.extent;
+	}
 
-    /*
-     * 親ノードのインスタンスを設定する。
+    /**
+     * ノードの位置を応答する
      */
-    public void setParent(Node aNode) {
-        this.parent = aNode;
+	public Point getLocation() {
+		return this.location;
+	}
+
+    /**
+     * ノードの名前を応答する
+     */
+	public String getName() {
+		return this.name;
+	}
+
+    /**
+     * ノードの状態を応答する
+     */
+	public Integer getStatus() {
+		return this.status;
+	}
+
+	/**
+	 *  ノードの大きさを設定する
+	 */
+	public void setExtent(Point aPoint) {
+        this.extent = aPoint;
+        return ;
+	}
+
+	/**
+	 *  ノードの位置を設定する
+	 */
+	public void setLocation(Point aPoint) {
+        this.location = aPoint;
         return;
-    }
+	}
+
+	/**
+	 *  ノードの名前を設定する
+	 */
+	public void setName(String aString) {
+        this.name = aString;
+        return ;
+	}
+
+	/**
+	 *  ノードの状態を設定する
+	 */
+	public void setStatus(Integer anInteger) {
+        this.status = anInteger;
+        return ;
+	}
+
+	/**
+	 *  文字列の高さを応答する
+	 */
+	public int stringHeight(String string) {
+		return 0;
+	}
 
     /*
-     * 子ノードのインスタンスを設定する。
+     * 文字列の幅を応答する
      */
-    public void setChildren(Node aNode) {
-        this.children.add(aNode);
-        Collections.sort(this.children, new NodeComparator());
-        return;
-    }
+	public int stringWidth(String string) {
+		return 0;
+	}
 
-    /*
-     * 探索済みかどうかを応答する。
+    /**
+     * 自分自身を文字列に変換する
      */
-    public boolean getVisit() {
-        return this.visit;
-    }
+	public String toString() {
+		return null;
+	}
 
-    /*
-     * 探索状態を設定する。
-     */
-    public void setVisit(boolean flag) {
-        this.visit = flag;
-        return;
-    }
-
-}
-
-class NodeComparator implements java.util.Comparator {
-    public int compare(Object node1, Object node2) {
-        return ((Node)node1).getName().compareTo((Node)node2).getName();
-    }
 }
